@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Player_Controller : MonoBehaviour
 {
     public InventorySystem inventory;
 
@@ -28,4 +28,20 @@ public class NewBehaviourScript : MonoBehaviour
             }
         }
     }
+
+    void Update()
+    {
+        // Check for using a HealthPotion (ID 1)
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            bool used = inventory.UseItem(0); // Use HealthPotion with ID 1
+            if (used)
+            {
+                // Apply health potion effect to the player
+                // Example: Increase player's health
+                Debug.Log("HealthPotion used, apply its effect.");
+            }
+        }
+    }
 }
+    

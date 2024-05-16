@@ -57,4 +57,29 @@ public class InventorySystem : MonoBehaviour
         Debug.Log("Item " + itemID + " not found in inventory.");
         return false;
     }
+
+    public bool UseItem(int itemID)
+    {
+        foreach (Item item in items)
+        {
+            if (item.itemID == itemID)
+            {
+                if (item.currentPickups > 0)
+                {
+                    item.currentPickups--;
+                    Debug.Log("Used one: " + itemID);
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("No more " + itemID + " to use.");
+                    return false;
+                }
+            }
+        }
+        Debug.Log("Item " + itemID + " not found in inventory.");
+        return false;
+    }
+
+    
 }
