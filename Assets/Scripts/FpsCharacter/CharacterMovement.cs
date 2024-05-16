@@ -1,53 +1,55 @@
 using UnityEngine;
-using System.Collections;
 using DG.Tweening;
-using UnityEngine.EventSystems;
 
 public class CharacterMovement : MonoBehaviour
 {
+    [Header("Camera Sensitivity")]
     public float verticalCamSenstivity;
     public float horizontalCamSenstivity;
     public Vector2 camVerticalRange;
 
+    [Header("Tilt Settings")]
     public float strafeTilt;
     public float tiltChangeDuration = 0.3f;
     private float currentTiltAmount = 0f;
 
-    public float Speed;
+    [Header("Movement Settings")]
+    public float speed;
     public float gravityScale;
     public float jumpHeight;
     public Transform groundCheck;
     public float groundDistance;
     public LayerMask groundMask;
 
+    [Header("Bobbing Settings")]
     public float bobbingStrength = 0.2f;
     public float bobbingSpeedMultiplier = 1f;
     private float defaultPosY;
 
+    [Header("Slide Settings")]
     public float slideSpeed = 10f;
     public float slideDuration = 1f;
     public float slideTween = 0.2f;
-    public float slideHHeight = 0.5f;
+    public float slideHeight = 0.5f;
     public float slideFOV = 100f;
     private float baseHeight;
     private float currentSlideSpeed;
     private float baseFOV;
     private bool isSliding;
+    private Vector3 slideDirectionBefore;
 
-    private Camera head;
-    private CharacterController characterController;
+    [Header("Components")]
+    [SerializeField] private Camera head;
+    [SerializeField] private CharacterController characterController;
     private float xRotation = 0f;
     private bool isGrounded;
     private Vector3 fallSpeed;
-    private Vector3 moveDirection;
-
-    private bool canChangeDirection = true;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         baseHeight = characterController.height;
-        defaultPosY = Camera.main.transform.localPosition.y;
+        defaultPosY = head.transform.localPosition.y;
         head = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
         baseFOV = head.fieldOfView;
@@ -98,7 +100,7 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             Jump();
 
-        if (Input.GetKeyDown(KeyCode.LeftControl) && !isSliding)
+        if (Input.GetButtonDown("Slide") && !isSliding && IsMoving())
             Slide();
     }
 
@@ -112,22 +114,18 @@ public class CharacterMovement : MonoBehaviour
         if (isSliding)
         {
             currentSlideSpeed = Mathf.Lerp(currentSlideSpeed, 0f, slideDuration * Time.deltaTime);
-            Vector3 slideDirection = transform.forward * currentSlideSpeed;
+            Vector3 slideDirection = slideDirectionBefore.normalized * currentSlideSpeed;
             characterController.Move(slideDirection * Time.deltaTime);
-
         }
         else
         {
             Vector3 moveDirection = GetMoveDirection();
-            characterController.Move(moveDirection * Speed * Time.deltaTime);
+            characterController.Move(moveDirection * speed * Time.deltaTime);
         }
     }
 
     Vector3 GetMoveDirection()
     {
-        if (!canChangeDirection)
-            return Vector3.zero;
-
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         return transform.right * x + transform.forward * z;
@@ -154,7 +152,6 @@ public class CharacterMovement : MonoBehaviour
             fallSpeed.y = Mathf.Sqrt(2 * jumpHeight * gravityScale);
             StopSlide();
         }
-            
     }
 
     void Slide()
@@ -163,7 +160,14 @@ public class CharacterMovement : MonoBehaviour
         {
             isSliding = true;
             currentSlideSpeed = slideSpeed;
-            DOTween.To(() => characterController.height, x => characterController.height = x, slideHHeight, slideTween)
+
+            // Store the direction the player was moving in before sliding
+            slideDirectionBefore = GetMoveDirection();
+
+            DOTween.To(() => characterController.height, x => characterController.height = x, slideHeight, slideTween)
+                .SetEase(Ease.OutSine);
+
+            DOTween.To(() => head.transform.localPosition, pos => head.transform.localPosition = pos, new Vector3(head.transform.localPosition.x, 0f, head.transform.localPosition.z), slideTween)
                 .SetEase(Ease.OutSine);
 
             DOTween.To(() => head.fieldOfView, x => head.fieldOfView = x, slideFOV, slideTween)
@@ -175,8 +179,10 @@ public class CharacterMovement : MonoBehaviour
 
     void StopSlide()
     {
-
         DOTween.To(() => characterController.height, x => characterController.height = x, baseHeight, slideTween)
+            .SetEase(Ease.OutSine);
+
+        DOTween.To(() => head.transform.localPosition, pos => head.transform.localPosition = pos, new Vector3(head.transform.localPosition.x, defaultPosY, head.transform.localPosition.z), slideTween)
             .SetEase(Ease.OutSine);
 
         DOTween.To(() => head.fieldOfView, x => head.fieldOfView = x, baseFOV, slideTween)
@@ -185,11 +191,9 @@ public class CharacterMovement : MonoBehaviour
         isSliding = false;
     }
 
-
-
     void CameraBobbing()
     {
-        float bobbingAmount = Mathf.Sin(Time.time * Speed * bobbingSpeedMultiplier) * bobbingStrength;
+        float bobbingAmount = Mathf.Sin(Time.time * speed * bobbingSpeedMultiplier) * bobbingStrength;
         Vector3 localPos = head.transform.localPosition;
         localPos.y = defaultPosY + bobbingAmount;
         head.transform.localPosition = localPos;
