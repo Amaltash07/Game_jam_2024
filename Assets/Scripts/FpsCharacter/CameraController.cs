@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using DG.Tweening;
 
 public class CameraController : MonoBehaviour
@@ -20,17 +19,20 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void OnLook(InputValue mouse)
+    void Update()
     {
-        float mousex = mouse.Get<Vector2>().x * horizontalCamSenstivity * Time.deltaTime;
-        float mousey = mouse.Get<Vector2>().y * verticalCamSenstivity * Time.deltaTime;
+        float mousex = Input.GetAxis("Mouse X") * verticalCamSenstivity * Time.deltaTime;
+        float mousey = Input.GetAxis("Mouse Y") * verticalCamSenstivity * Time.deltaTime;
         xRotation -= mousey;
         xRotation = Mathf.Clamp(xRotation, camVerticalRange.x, camVerticalRange.y);
 
         transform.Rotate(Vector3.up * mousex);
     }
-
     private void FixedUpdate()
+    {
+        tiltHandler();
+    }
+    private void tiltHandler()
     {
         float newTiltAmount = strafeTilt * Input.GetAxis("Horizontal");
 
