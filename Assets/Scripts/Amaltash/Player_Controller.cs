@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Controller : MonoBehaviour
+
+public class Player_Controller  : MonoBehaviour
 {
+
+
     public InventorySystem inventory;
 
     void Start()
@@ -16,7 +19,7 @@ public class Player_Controller : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-      
+
         if (other.CompareTag("Item"))
         {
             Debug.Log("colliding with the item");
