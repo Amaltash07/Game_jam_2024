@@ -1944,7 +1944,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1742127025}
   - component: {fileID: 1742127024}
-  - component: {fileID: 1742127026}
   - component: {fileID: 1742127028}
   m_Layer: 0
   m_Name: Player
@@ -1988,23 +1987,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1742127026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742127023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 828b826b22780684c9e4fc759659197b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  verticalCamSenstivity: 300
-  horizontalCamSenstivity: 300
-  strafeTilt: -3
-  camVerticalRange: {x: -75, y: 75}
-  tiltChangeDuration: 0.1
 --- !u!114 &1742127028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2019,8 +2001,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalCamSenstivity: 300
   horizontalCamSenstivity: 300
-  strafeTilt: -3
   camVerticalRange: {x: -75, y: 75}
+  strafeTilt: -3
   tiltChangeDuration: 0.1
   Speed: 12
   gravityScale: 20
@@ -2032,10 +2014,9 @@ MonoBehaviour:
     m_Bits: 8
   bobbingStrength: 0.2
   bobbingSpeedMultiplier: 1
-  bounceDuration: 0.4
-  bounceHeight: 0.5
   slideSpeed: 10
   slideDuration: 1
+  slideTween: 0.2
   slideHHeight: 0.5
   slideFOV: 100
 --- !u!1 &1830495541
