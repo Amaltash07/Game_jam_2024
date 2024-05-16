@@ -2017,6 +2017,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80f81f0440593946bc0a99575cdbe99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verticalCamSenstivity: 300
+  horizontalCamSenstivity: 300
+  strafeTilt: -3
+  camVerticalRange: {x: -75, y: 75}
+  tiltChangeDuration: 0.1
   Speed: 12
   gravityScale: 20
   jumpHeight: 2
@@ -2029,6 +2034,10 @@ MonoBehaviour:
   bobbingSpeedMultiplier: 1
   bounceDuration: 0.4
   bounceHeight: 0.5
+  slideSpeed: 10
+  slideDuration: 1
+  slideHHeight: 0.5
+  slideFOV: 100
 --- !u!1 &1830495541
 GameObject:
   m_ObjectHideFlags: 0
