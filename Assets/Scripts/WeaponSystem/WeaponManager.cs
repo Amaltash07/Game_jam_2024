@@ -10,7 +10,7 @@ public class WeaponManager : MonoBehaviour
     public float switchTime;
 
 
-    private int currentID;
+    private int currentID = 0;
     private bool canSwitch;
 
 
@@ -30,7 +30,6 @@ public class WeaponManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(canSwitch);
         if (Input.GetButtonDown("Change Weapon")) 
         {
             nextWeapon();
