@@ -692,8 +692,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   verticalCamSenstivity: 100
   horizontalCamSenstivity: 100
-  strafeTilt: 3
+  strafeTilt: -3
   camVerticalRange: {x: -75, y: 75}
+  tiltChangeDuration: 0.1
 --- !u!114 &1742127027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,7 +737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80f81f0440593946bc0a99575cdbe99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  Speed: 8
   gravityScale: 12
   jumpHeight: 0
   groundCheck: {fileID: 127476576}
@@ -744,6 +745,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  bobbingStrength: 0.2
 --- !u!1 &1830495541
 GameObject:
   m_ObjectHideFlags: 0

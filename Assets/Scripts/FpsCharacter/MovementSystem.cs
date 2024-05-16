@@ -13,8 +13,7 @@ public class MovementSystem : MonoBehaviour
     public float groundDistance;
     public LayerMask groundMask;
 
-    // Camera bobbing variables
-    public float bobbingStrength = 0.2f; // Adjust this for the bobbing effect
+    public float bobbingStrength = 0.2f;
     private float defaultPosY;
 
     void Start()
@@ -32,10 +31,7 @@ public class MovementSystem : MonoBehaviour
         {
             CameraBobbing();
         }
-        else
-        {
-            ResetCameraPosition();
-        }
+       
     }
 
     void handleMovement()
@@ -70,10 +66,5 @@ public class MovementSystem : MonoBehaviour
         Camera.main.transform.localPosition = localPos;
     }
 
-    void ResetCameraPosition()
-    {
-        Vector3 localPos = Camera.main.transform.localPosition;
-        localPos.y = defaultPosY;
-        Camera.main.transform.localPosition = localPos;
-    }
+    
 }
