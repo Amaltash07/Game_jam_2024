@@ -32,10 +32,12 @@ public class CharacterMovement : MonoBehaviour
     public float slideTween = 0.2f;
     public float slideHeight = 0.5f;
     public float slideFOV = 100f;
+    public float slideTimeoutTime = 2f;
     private float baseHeight;
     private float currentSlideSpeed;
     private float baseFOV;
     private bool isSliding;
+    private bool canSlide;
     private Vector3 slideDirectionBefore;
 
     [Header("Components")]
@@ -100,7 +102,7 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             Jump();
 
-        if (Input.GetButtonDown("Slide") && !isSliding && IsMoving())
+        if (Input.GetButtonDown("Slide") && !isSliding && IsMoving() && canSlide)
             Slide();
     }
 
@@ -159,9 +161,9 @@ public class CharacterMovement : MonoBehaviour
         if (!isSliding)
         {
             isSliding = true;
+            canSlide = false;
             currentSlideSpeed = slideSpeed;
 
-            // Store the direction the player was moving in before sliding
             slideDirectionBefore = GetMoveDirection();
 
             DOTween.To(() => characterController.height, x => characterController.height = x, slideHeight, slideTween)
@@ -189,6 +191,8 @@ public class CharacterMovement : MonoBehaviour
             .SetEase(Ease.OutSine);
 
         isSliding = false;
+        Invoke("resetSlide", slideTimeoutTime);
+
     }
 
     void CameraBobbing()
@@ -197,5 +201,9 @@ public class CharacterMovement : MonoBehaviour
         Vector3 localPos = head.transform.localPosition;
         localPos.y = defaultPosY + bobbingAmount;
         head.transform.localPosition = localPos;
+    }
+    void resetSlide()
+    {
+        canSlide = true;
     }
 }
