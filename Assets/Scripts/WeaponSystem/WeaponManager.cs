@@ -18,12 +18,12 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         canSwitch = false;
-        foreach (var weapon in weapons)
+        for(int i=0;i<weapons.Count;i++)
         {
-            if(weapon.isActive)
+            if (weapons[i].isActive)
             {
-                currentID = weapons.IndexOf(weapon);
-                weaponEquip(currentWeapon);
+                currentID = i;
+                weaponEquip(weapons[i]);
                 break;
             }
         }
