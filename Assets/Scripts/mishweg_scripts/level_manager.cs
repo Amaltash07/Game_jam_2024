@@ -32,7 +32,7 @@ public class level_manager : MonoBehaviour
 
         do
         {
-            await Task.Delay(50);
+            await Task.Delay(150);
             _pregressbar.fillAmount = scene.progress;
         } while (scene.progress < 0.9f);
 
