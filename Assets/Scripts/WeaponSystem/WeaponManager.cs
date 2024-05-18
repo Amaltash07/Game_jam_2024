@@ -164,6 +164,11 @@ public class WeaponManager : MonoBehaviour
         }
 
     }
+
+    void ShootHitScan()
+    {
+
+    }
     
 }
 
