@@ -183,8 +183,8 @@ public class WeaponManager : MonoBehaviour
         Vector2 recoilDirection =new Vector2(Random.Range(-currentWeapon.aimOffset.x, currentWeapon.aimOffset.x), Random.Range(-currentWeapon.aimOffset.y, currentWeapon.aimOffset.y));
 
         // Apply recoil to camera rotation
-        playerCamera.transform.Rotate(recoilDirection.x, 0, 0);
-        transform.Rotate(0, recoilDirection.y, 0);
+        playerCamera.transform.Rotate(recoilDirection.y, 0, 0);
+        transform.Rotate(0, recoilDirection.x, 0);
     }
 }
 
