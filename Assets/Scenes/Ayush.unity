@@ -5912,7 +5912,7 @@ MonoBehaviour:
     WeaponType: 0
     projectilePrefab: {fileID: 7226187229663636624, guid: 9803175875e926048bb58209c8a14f5e, type: 3}
     hitscanRange: 120
-    recoilIntensity: 10
+    recoilIntensity: 1
     isActive: 1
     CurrentAmmo: 100
   - weaponName: AmalPewPew
@@ -5927,7 +5927,7 @@ MonoBehaviour:
     WeaponType: 0
     projectilePrefab: {fileID: 7226187229663636624, guid: 9803175875e926048bb58209c8a14f5e, type: 3}
     hitscanRange: 20
-    recoilIntensity: 3
+    recoilIntensity: 1
     isActive: 1
     CurrentAmmo: 9
   - weaponName: ShadowPewPewPew
@@ -5942,7 +5942,7 @@ MonoBehaviour:
     WeaponType: 0
     projectilePrefab: {fileID: 7226187229663636624, guid: 9803175875e926048bb58209c8a14f5e, type: 3}
     hitscanRange: 120
-    recoilIntensity: 2
+    recoilIntensity: 1
     isActive: 1
     CurrentAmmo: 50
   currentWeapon:

@@ -165,7 +165,7 @@ public class WeaponManager : MonoBehaviour
 
     void ShootHitScan()
     {
-        //ApplyRecoil();
+        ApplyRecoil();
 
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
@@ -177,35 +177,25 @@ public class WeaponManager : MonoBehaviour
             float distanceRatio = Vector3.Distance(firepoint.position, hit.collider.gameObject.transform.position) / Vector3.Distance(firepoint.position, ray.GetPoint(currentWeapon.hitscanRange));
             bulletTrail.transform.DOMove(hit.point, hitDelay * distanceRatio).OnComplete(() =>
             {
-
                 Debug.Log(Vector3.Distance(firepoint.position, hit.collider.gameObject.transform.position));
                 Destroy(hit.collider.gameObject);
+                Destroy(bulletTrail);
             });
         }
         else
         {
 
-            bulletTrail.transform.DOMove(ray.GetPoint(currentWeapon.hitscanRange), hitDelay);
+            bulletTrail.transform.DOMove(ray.GetPoint(currentWeapon.hitscanRange), hitDelay).OnComplete(() =>
+            {
+                Destroy(bulletTrail);
+            });
         }
-
     }
-    void ApplyRecoil()
+    private void ApplyRecoil()
     {
-        float recoilTime = 1 / (currentWeapon.rateOfFire);
-        float resetTime = 0.5f;
-
-        Vector2 recoilPattern = new Vector2(-1.5f, 0.8f) * currentWeapon.recoilIntensity;
-
-        Quaternion playerCameraTargetRotation = Quaternion.Euler(playerCamera.transform.rotation.eulerAngles + new Vector3(recoilPattern.y, 0, 0));
-        playerCamera.transform.DORotate(playerCameraTargetRotation.eulerAngles, recoilTime).SetEase(Ease.OutQuad).OnComplete(() =>
-        {
-            playerCamera.transform.DORotate(playerCamera.transform.rotation.eulerAngles - new Vector3(recoilPattern.y, 0, 0), resetTime).SetEase(Ease.InQuad);
-        });
-
-        Quaternion weaponTargetRotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, recoilPattern.x, 0));
-        transform.DORotate(weaponTargetRotation.eulerAngles, recoilTime).SetEase(Ease.OutQuad).OnComplete(() =>
-        {
-            transform.DORotate(transform.rotation.eulerAngles - new Vector3(0, recoilPattern.x, 0), resetTime).SetEase(Ease.InQuad);
-        });
+        Vector3 customShakePattern = new Vector3(0.1f, 0.2f, 0f) * currentWeapon.recoilIntensity;
+         playerCamera.transform.DOShakePosition(0.1f, customShakePattern);
     }
+
+
 }
