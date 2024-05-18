@@ -33,7 +33,7 @@ public class Weapon
     public weaponType WeaponType;
     public GameObject projectilePrefab;
     public float hitscanRange;
-    public Vector2 aimOffset;
+    public float recoilIntensity;
     public bool isActive;
 
     //[HideInInspector]

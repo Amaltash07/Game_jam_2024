@@ -13,6 +13,8 @@ public class WeaponManager : MonoBehaviour
     public Weapon currentWeapon;
     public float switchTime;
     public LayerMask targetMask;
+    public Transform firepoint;
+    public float hitDelay;
 
 
     private int currentID = 0;
@@ -163,27 +165,47 @@ public class WeaponManager : MonoBehaviour
 
     void ShootHitScan()
     {
-        ApplyRecoil();
+        //ApplyRecoil();
 
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
         RaycastHit hit;
+        GameObject bulletTrail = Instantiate(currentWeapon.projectilePrefab, firepoint.position, Quaternion.identity);
+
         if (Physics.Raycast(ray, out hit, currentWeapon.hitscanRange, targetMask))
         {
-            Debug.Log("Hit " + hit.collider.gameObject.name);
-            Destroy(hit.collider.gameObject);
+            float distanceRatio = Vector3.Distance(firepoint.position, hit.collider.gameObject.transform.position) / Vector3.Distance(firepoint.position, ray.GetPoint(currentWeapon.hitscanRange));
+            bulletTrail.transform.DOMove(hit.point, hitDelay * distanceRatio).OnComplete(() =>
+            {
+
+                Debug.Log(Vector3.Distance(firepoint.position, hit.collider.gameObject.transform.position));
+                Destroy(hit.collider.gameObject);
+            });
         }
         else
         {
-            // If no hit, you may want to do something here
+
+            bulletTrail.transform.DOMove(ray.GetPoint(currentWeapon.hitscanRange), hitDelay);
         }
+
     }
     void ApplyRecoil()
     {
-        Vector2 recoilDirection =new Vector2(Random.Range(-currentWeapon.aimOffset.x, currentWeapon.aimOffset.x), Random.Range(-currentWeapon.aimOffset.y, currentWeapon.aimOffset.y));
+        float recoilTime = 1 / (currentWeapon.rateOfFire);
+        float resetTime = 0.5f;
 
-        playerCamera.transform.Rotate(recoilDirection.y, 0, 0);
-        transform.Rotate(0, recoilDirection.x, 0);
+        Vector2 recoilPattern = new Vector2(-1.5f, 0.8f) * currentWeapon.recoilIntensity;
+
+        Quaternion playerCameraTargetRotation = Quaternion.Euler(playerCamera.transform.rotation.eulerAngles + new Vector3(recoilPattern.y, 0, 0));
+        playerCamera.transform.DORotate(playerCameraTargetRotation.eulerAngles, recoilTime).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            playerCamera.transform.DORotate(playerCamera.transform.rotation.eulerAngles - new Vector3(recoilPattern.y, 0, 0), resetTime).SetEase(Ease.InQuad);
+        });
+
+        Quaternion weaponTargetRotation = Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, recoilPattern.x, 0));
+        transform.DORotate(weaponTargetRotation.eulerAngles, recoilTime).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            transform.DORotate(transform.rotation.eulerAngles - new Vector3(0, recoilPattern.x, 0), resetTime).SetEase(Ease.InQuad);
+        });
     }
 }
-
