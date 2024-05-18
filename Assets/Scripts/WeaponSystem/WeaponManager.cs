@@ -163,6 +163,8 @@ public class WeaponManager : MonoBehaviour
 
     void ShootHitScan()
     {
+        ApplyRecoil();
+
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
         RaycastHit hit;
@@ -176,6 +178,13 @@ public class WeaponManager : MonoBehaviour
             // If no hit, you may want to do something here
         }
     }
+    void ApplyRecoil()
+    {
+        Vector2 recoilDirection =new Vector2(Random.Range(-currentWeapon.aimOffset.x, currentWeapon.aimOffset.x), Random.Range(-currentWeapon.aimOffset.y, currentWeapon.aimOffset.y));
 
+        // Apply recoil to camera rotation
+        playerCamera.transform.Rotate(recoilDirection.x, 0, 0);
+        transform.Rotate(0, recoilDirection.y, 0);
+    }
 }
 
