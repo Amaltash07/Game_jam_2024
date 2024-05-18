@@ -37,7 +37,7 @@ public class CharacterMovement : MonoBehaviour
     private float currentSlideSpeed;
     private float baseFOV;
     private bool isSliding;
-    private bool canSlide;
+    private bool canSlide = true;
     private Vector3 slideDirectionBefore;
 
     [Header("Components")]
