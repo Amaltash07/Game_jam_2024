@@ -5933,7 +5933,7 @@ MonoBehaviour:
     WeaponType: 0
     projectilePrefab: {fileID: 0}
     hitscanRange: 1000000
-    aimOffset: {x: 1, y: 1}
+    aimOffset: {x: 2, y: 2}
     isActive: 1
     CurrentAmmo: 10
   - weaponName: AmalPewPew
@@ -5963,7 +5963,7 @@ MonoBehaviour:
     WeaponType: 0
     projectilePrefab: {fileID: 0}
     hitscanRange: 1000000
-    aimOffset: {x: 0.2, y: 0.2}
+    aimOffset: {x: 5, y: 5}
     isActive: 1
     CurrentAmmo: 50
   currentWeapon:
