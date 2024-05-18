@@ -1,8 +1,9 @@
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using static Weapon;
+using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -11,21 +12,17 @@ public class WeaponManager : MonoBehaviour
     [HideInInspector]
     public Weapon currentWeapon;
     public float switchTime;
+    public LayerMask targetMask;
 
 
     private int currentID = 0;
     private bool canSwitch;
     private float nextFireTime;
-
-    public RectTransform crosshairUI;
-    public ParticleSystem muzzleFlash;
-    public TrailRenderer bulletTrail;
-
-
-
+    private Camera playerCamera;
 
     private void Start()
     {
+        playerCamera = Camera.main;
         canSwitch = false;
         for (int i = 0; i < weapons.Count; i++)
         {
@@ -145,8 +142,7 @@ public class WeaponManager : MonoBehaviour
         {
             if (currentWeapon.WeaponType == weaponType.hitscan)
             {
-                Debug.Log("Pew");
-                //hitscan  system
+                ShootHitScan();
             }
             else if (currentWeapon.WeaponType == weaponType.projectile)
             {
@@ -167,8 +163,19 @@ public class WeaponManager : MonoBehaviour
 
     void ShootHitScan()
     {
+        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
 
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, currentWeapon.hitscanRange, targetMask))
+        {
+            Debug.Log("Hit " + hit.collider.gameObject.name);
+            Destroy(hit.collider.gameObject);
+        }
+        else
+        {
+            // If no hit, you may want to do something here
+        }
     }
-    
+
 }
 
