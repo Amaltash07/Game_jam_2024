@@ -6,18 +6,17 @@ public class PlayerCheckpoints : MonoBehaviour
 {
 
     private Vector3 lastCheckpointPosition;
-    [SerializeField]
-    private Rigidbody playerRigidbody;
-    // Start is called before the first frame update
+    private CharacterController characterController;
+
     void Start()
     {
         // Initialize the last checkpoint position to the player's starting position
         lastCheckpointPosition = transform.position;
-        playerRigidbody = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
 
-        if (playerRigidbody == null)
+        if (characterController == null)
         {
-            Debug.LogError("Rigidbody component not found on the player.");
+            Debug.LogError("CharacterController component not found on the player.");
         }
     }
 
@@ -43,15 +42,14 @@ public class PlayerCheckpoints : MonoBehaviour
 
     public void RestartFromLastCheckpoint()
     {
+        // Disable CharacterController to allow direct position set
+        characterController.enabled = false;
+
         // Move the player back to the last checkpoint position
         transform.position = lastCheckpointPosition;
 
-        // Optionally reset the velocity if using a Rigidbody
-        if (playerRigidbody != null)
-        {
-            playerRigidbody.velocity = Vector3.zero;
-            playerRigidbody.angularVelocity = Vector3.zero;
-        }
+        // Re-enable CharacterController
+        characterController.enabled = true;
 
         Debug.Log("Player restarted from checkpoint: " + lastCheckpointPosition);
     }
