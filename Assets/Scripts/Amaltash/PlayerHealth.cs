@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-    public Text healthText;
+    public  TextMeshProUGUI healthText;
 
     void Start()
     {
         // Initialize current health to max health at the start
         currentHealth = maxHealth;
+        healthText.text = "health:"+currentHealth.ToString();
     }
 
     // Method to increase health
@@ -23,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
         {
             currentHealth = maxHealth; // Cap the health to the max value
         }
+        healthText.text = "health:" + currentHealth.ToString();
 
         Debug.Log("Health increased by " + amount + ". Current health: " + currentHealth);
     }
@@ -37,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Player health is zero. Player will be destroyed.");
             Destroy(gameObject); // Destroy the player GameObject
         }
+        healthText.text = "health:" + currentHealth.ToString();
 
         Debug.Log("Health decreased by " + amount + ". Current health: " + currentHealth);
     }
