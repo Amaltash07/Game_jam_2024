@@ -117,7 +117,7 @@ public class tutorials : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && tutorialName == "nextlevel")
         {
-            tutorial7.SetActive(false);
+            tutorial8.SetActive(false);
 
 
         }
