@@ -21,6 +21,7 @@ public class level_manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Time.timeScale = 1.0f;
     }
 
    public async void LoadScene(string sceneName)
