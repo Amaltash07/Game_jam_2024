@@ -34,7 +34,7 @@ public class Sha3dowEnemy : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("Sha3dowPlayer").transform;
+        player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
