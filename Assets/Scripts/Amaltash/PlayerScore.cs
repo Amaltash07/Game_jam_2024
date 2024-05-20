@@ -6,11 +6,22 @@ using TMPro;
 
 public class PlayerScore : MonoBehaviour
 {
+    public static PlayerScore Instance;
     public int score = 0;
     public TextMeshProUGUI scoreText;
 
     void Start()
     {
+        if(Instance == null)
+        {
+            Instance=this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+        DontDestroyOnLoad(this);
+
         UpdateScoreText();
     }
 
