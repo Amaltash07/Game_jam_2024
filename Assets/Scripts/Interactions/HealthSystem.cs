@@ -56,6 +56,10 @@ public class HealthSystem : MonoBehaviour
     }
     void updateHP()
     {
-        HPCount.text = "HP = " + currentHealth.ToString();
+        if (HPCount != null)
+        {
+            HPCount.text = "HP = " + currentHealth.ToString();
+        }
+
     }
 }
