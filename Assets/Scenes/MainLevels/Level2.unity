@@ -4478,7 +4478,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 351647387, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
 --- !u!1001 &269087849
 PrefabInstance:
@@ -51097,6 +51098,14 @@ PrefabInstance:
       propertyPath: Cost
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1559581284800834794, guid: 7c6fae44844bdae4583d8709305c0700, type: 3}
+      propertyPath: m_TagString
+      value: HealthZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559581284976706482, guid: 7c6fae44844bdae4583d8709305c0700, type: 3}
+      propertyPath: m_TagString
+      value: WallZone
+      objectReference: {fileID: 0}
     - target: {fileID: 6949601846875377890, guid: 7c6fae44844bdae4583d8709305c0700, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -51161,5 +51170,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hub
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 383518034, guid: 7c6fae44844bdae4583d8709305c0700, type: 3}
+    - {fileID: 672955672, guid: 7c6fae44844bdae4583d8709305c0700, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7c6fae44844bdae4583d8709305c0700, type: 3}
