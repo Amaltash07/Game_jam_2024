@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthSystem : MonoBehaviour
 {
     public float maxHealth = 100;
-    private float currentHealth;
+    public float currentHealth;
+    public TextMeshProUGUI HPCount;
 
     void Start()
     {
         currentHealth = maxHealth;
+        updateHP();
     }
     public void Heal(float amount)
     {
@@ -18,7 +21,7 @@ public class HealthSystem : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        Debug.Log(this.gameObject + "HP= " +  currentHealth);
+        updateHP();
     }
     public void Damage(float amount)
     {
@@ -29,7 +32,7 @@ public class HealthSystem : MonoBehaviour
             Debug.Log("Ded");
             DeathLogic();
         }
-        Debug.Log(this.gameObject + "HP= " + currentHealth);
+        updateHP();
     }
     void DeathLogic()
     {
@@ -50,5 +53,9 @@ public class HealthSystem : MonoBehaviour
             //wall Destroy logic(maybe some paticale effects)
             Destroy(this.gameObject);
         }
+    }
+    void updateHP()
+    {
+        HPCount.text = "HP = " + currentHealth.ToString();
     }
 }

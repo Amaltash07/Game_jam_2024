@@ -4,6 +4,7 @@ using static Weapon;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class WeaponManager : MonoBehaviour
     public Transform firepoint;
     public float hitDelay;
     public bool isWallBreaker;
+    public float wallBreakerDuration;
+    public TextMeshProUGUI ammoText;
 
     private int currentID = 0;
     private bool canSwitch;
@@ -117,6 +120,7 @@ public class WeaponManager : MonoBehaviour
             {
                 currentWeapon.CurrentAmmo = currentWeapon.MaxAmmo;
             }
+            displayAmmo();
         });
     }
 
@@ -190,6 +194,7 @@ public class WeaponManager : MonoBehaviour
                 Debug.Log("PewBoom");
             }
             currentWeapon.CurrentAmmo--;
+            displayAmmo();
         }
         else
         {
@@ -249,6 +254,20 @@ public class WeaponManager : MonoBehaviour
     public void buyAmmo(int ammoCount)
     {
         currentWeapon.loadAmmo(ammoCount);
+        displayAmmo();
+    }
+    public void activateWallBreaker()
+    {
+        isWallBreaker = true;
+        Invoke("resetWallBreaker", wallBreakerDuration);
+    }
+    void resetWallBreaker()
+    {
+        isWallBreaker=false;
+    }
+    void displayAmmo()
+    {
+        ammoText.text="Ammo = "+currentWeapon.CurrentAmmo.ToString();
     }
 
 

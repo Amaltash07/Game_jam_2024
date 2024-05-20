@@ -7,6 +7,7 @@ public class InventorySystem : MonoBehaviour
     [System.Serializable]
     public class Item
     {
+        public string name;
         public int itemID;
         public int maxPickups;
         public int currentPickups;
@@ -19,21 +20,13 @@ public class InventorySystem : MonoBehaviour
         }
     }
 
-    // List to store the items in the inventory
     public List<Item> items;
+    public int abilityCount;
 
-    void Start()
+    private void Start()
     {
-        // Initialize the items list
-        items = new List<Item>
-        {
-            new Item(0, 3),
-            new Item(1, 2),
-            new Item(2, 1)
-        };
+        abilityCount=items.Count;
     }
-
-    // Method to pick up an item
     public bool PickupItem(int itemID)
     {
         foreach (Item item in items)
