@@ -113,6 +113,6 @@ public class Player_Ability : MonoBehaviour
     }
     void updateAbility()
     {
-        AbilityName.text= inventory.items[abilityID].name+" Count = " + inventory.items[abilityID].currentPickups.ToString();
+        AbilityName.text= inventory.items[abilityID].currentPickups.ToString();
     }
 }
