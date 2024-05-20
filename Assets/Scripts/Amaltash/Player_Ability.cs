@@ -49,7 +49,6 @@ public class Player_Ability : MonoBehaviour
         }
 
         useAbility(abilityID);
-        Debug.Log(abilityID);
     }
     void switchAbility(bool dir)
     {

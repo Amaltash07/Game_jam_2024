@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,11 @@ public class PlayerFollower : MonoBehaviour
     public Transform targetTransform; // The target we want to lerp towards
     public float positionLerpSpeed = 5f; // Speed at which to interpolate position
 
+
+    private void Start()
+    {
+       transform.position = targetTransform.position;
+    }
     void Update()
     {
         if (targetTransform != null)
@@ -16,3 +22,5 @@ public class PlayerFollower : MonoBehaviour
         }
     }
 }
+
+
