@@ -60,6 +60,6 @@ public class BulletBuyingSystem : MonoBehaviour
         {
             Debug.Log("ammo full");
         }
-        
+
     }
 }

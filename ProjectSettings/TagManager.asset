@@ -9,6 +9,7 @@ TagManager:
   - Checkpoint
   - BuyingZone
   - Enemy
+  - abilityZone
   layers:
   - Default
   - TransparentFX

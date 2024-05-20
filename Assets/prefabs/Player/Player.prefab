@@ -123,8 +123,8 @@ Camera:
   m_GameObject: {fileID: 2363311546464107025}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 2363311547927300964}
   - component: {fileID: 2363311547927300965}
   - component: {fileID: 2897097860545182020}
+  - component: {fileID: 351647387}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -728,7 +729,7 @@ MonoBehaviour:
   slideTween: 0.2
   slideHeight: 0.1
   slideFOV: 110
-  slideTimeoutTime: 2
+  slideTimeoutTime: 0.4
   head: {fileID: 2363311546464107031}
   characterController: {fileID: 2363311547927300963}
 --- !u!114 &2363311547927300966
@@ -745,6 +746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - weaponName: MishuPew
+    weaponIcon: {fileID: 0}
     weaponObject: {fileID: 2363311548165077639}
     weaponRectTransform: {fileID: 2363311548165077638}
     rateOfFire: 6
@@ -760,6 +762,7 @@ MonoBehaviour:
     isActive: 1
     CurrentAmmo: 500
   - weaponName: AmalPewPew
+    weaponIcon: {fileID: 0}
     weaponObject: {fileID: 2363311547490784911}
     weaponRectTransform: {fileID: 2363311547490784910}
     rateOfFire: 10
@@ -772,9 +775,10 @@ MonoBehaviour:
     projectilePrefab: {fileID: 7226187229663636624, guid: 9803175875e926048bb58209c8a14f5e, type: 3}
     hitscanRange: 20
     recoilOffset: {x: 0.2, y: 0.8}
-    isActive: 1
+    isActive: 0
     CurrentAmmo: 50
   - weaponName: ShadowPewPewPew
+    weaponIcon: {fileID: 0}
     weaponObject: {fileID: 2363311547497045547}
     weaponRectTransform: {fileID: 2363311547497045546}
     rateOfFire: 10
@@ -787,10 +791,11 @@ MonoBehaviour:
     projectilePrefab: {fileID: 7226187229663636624, guid: 9803175875e926048bb58209c8a14f5e, type: 3}
     hitscanRange: 120
     recoilOffset: {x: 0.2, y: 0.4}
-    isActive: 1
+    isActive: 0
     CurrentAmmo: 500
   currentWeapon:
     weaponName: MishuPew
+    weaponIcon: {fileID: 0}
     weaponObject: {fileID: 2363311548165077639}
     weaponRectTransform: {fileID: 2363311547497045546}
     rateOfFire: 50
@@ -812,6 +817,8 @@ MonoBehaviour:
   firepoint: {fileID: 2363311548345258655}
   hitDelay: 0.3
   isWallBreaker: 0
+  wallBreakerDuration: 20
+  ammoText: {fileID: 0}
 --- !u!114 &2363311547927300964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,7 +831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281a666f594bbe449837f898d1e33236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  AbilityName: {fileID: 0}
 --- !u!114 &2363311547927300965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,6 +845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  currentHealth: 0
+  HPCount: {fileID: 0}
 --- !u!114 &2897097860545182020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,8 +859,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 414b1bd52e4ca7048b0a5a6e048a1789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletCost: 10
-  ammoCount: 0
+  bulletCost: 0
+  ammoCount: 100
+--- !u!114 &351647387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363311547927300988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7782a0f9e0ba6743a4ee160599000ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2363311547977229213
 GameObject:
   m_ObjectHideFlags: 0
