@@ -57,8 +57,10 @@ public class tutorials : MonoBehaviour
         if (other.gameObject.tag == "Player" && tutorialName == "nextlevel")
         {
             tutorial8.SetActive(true);
-           
 
+
+
+            Invoke("levelDrop", 2f);
 
         }
     }
@@ -123,4 +125,11 @@ public class tutorials : MonoBehaviour
         }
 
     }
+
+    private void  levelDrop()
+    {
+        level_manager.Instance.LoadScene(2);
+        
+    }
+
 }
