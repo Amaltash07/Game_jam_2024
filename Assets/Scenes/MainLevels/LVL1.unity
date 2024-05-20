@@ -2130,6 +2130,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 464017049}
     - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
+      propertyPath: isWallBreaker
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
+      propertyPath: wallBreakerDuration
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
       propertyPath: weapons.Array.data[1].isActive
       value: 0
       objectReference: {fileID: 0}
@@ -19845,6 +19853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1534569101}
   - component: {fileID: 1534569100}
+  - component: {fileID: 1534569102}
   m_Layer: 0
   m_Name: LevelDrop
   m_TagString: Untagged
@@ -19860,7 +19869,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534569099}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 187.61362, y: 5.825943, z: 116.10942}
@@ -19880,6 +19889,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1534569102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534569099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3393f184238ab84da5d47f30e86d397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1535635696
 Mesh:
   m_ObjectHideFlags: 0
