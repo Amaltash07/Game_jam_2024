@@ -2130,6 +2130,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 464017049}
     - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
+      propertyPath: weapons.Array.data[1].isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
+      propertyPath: weapons.Array.data[2].isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
       propertyPath: weapons.Array.data[0].weaponIcon
       value: 
       objectReference: {fileID: 495431810}
@@ -3419,7 +3427,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 915867478}
 --- !u!33 &525887354
@@ -8393,7 +8401,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1912930540}
 --- !u!33 &843422386
@@ -13942,7 +13950,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 312018123}
 --- !u!33 &1031377777
@@ -20524,7 +20532,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1333259890}
 --- !u!33 &1858825497
