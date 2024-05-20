@@ -9,7 +9,8 @@ TagManager:
   - Checkpoint
   - BuyingZone
   - Enemy
-  - abilityZone
+  - HealthZone
+  - WallZone
   layers:
   - Default
   - TransparentFX

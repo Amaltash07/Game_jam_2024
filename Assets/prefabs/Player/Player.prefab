@@ -653,7 +653,8 @@ GameObject:
   - component: {fileID: 2363311547927300964}
   - component: {fileID: 2363311547927300965}
   - component: {fileID: 2897097860545182020}
-  - component: {fileID: 351647387}
+  - component: {fileID: 1351561062296541364}
+  - component: {fileID: 4370424287713858145}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -861,7 +862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletCost: 0
   ammoCount: 100
---- !u!114 &351647387
+--- !u!114 &1351561062296541364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -870,9 +871,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2363311547927300988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7782a0f9e0ba6743a4ee160599000ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 15a1615c3f4a7f940b356521f1e380aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cost: 0
+  ammoCount: 3
+--- !u!114 &4370424287713858145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2363311547927300988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0270ee26d633aa4fac5f2cf52ce63a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cost: 0
+  ammoCount: 1
 --- !u!1 &2363311547977229213
 GameObject:
   m_ObjectHideFlags: 0
