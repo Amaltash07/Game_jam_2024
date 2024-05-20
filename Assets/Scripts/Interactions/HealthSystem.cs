@@ -60,6 +60,6 @@ public class HealthSystem : MonoBehaviour
         {
             HPCount.text = "HP = " + currentHealth.ToString();
         }
-        
+
     }
 }
