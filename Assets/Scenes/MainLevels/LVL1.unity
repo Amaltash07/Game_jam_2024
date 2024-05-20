@@ -16440,9 +16440,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'practice over my freind now, lets kill some fresh meat.
-
-'
+  m_text: look a breaker lets take it and press and F  to acticate it now shoot at
+    a wall to break it and go to next level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

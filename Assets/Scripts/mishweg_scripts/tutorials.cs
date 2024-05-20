@@ -60,7 +60,7 @@ public class tutorials : MonoBehaviour
 
 
 
-            Invoke("levelDrop", 2f);
+           
 
         }
     }
@@ -126,10 +126,6 @@ public class tutorials : MonoBehaviour
 
     }
 
-    private void  levelDrop()
-    {
-        level_manager.Instance.LoadScene(2);
-        
-    }
+    
 
 }

@@ -59,6 +59,10 @@ public class HealthSystem : MonoBehaviour
         if (HPCount != null)
         {
             HPCount.text =  currentHealth.ToString();
+            if (currentHealth == 0  )
+            {
+                level_manager.Instance.LoadScene(1);
+            }
         }
 
     }
