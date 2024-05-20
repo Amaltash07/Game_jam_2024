@@ -14,6 +14,7 @@ public class ChasingSystem : MonoBehaviour
 
     void Start()
     {
+        player = FindAnyObjectByType<CharacterController>().gameObject;
         agent = GetComponent<NavMeshAgent>();
     }
 

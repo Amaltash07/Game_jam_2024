@@ -11,8 +11,9 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 3.5f; // Movement speed of the enemy
     public float grappleSpeed = 10f; // Speed at which the enemy moves when grappling
     public float grappleDuration = 2f; // Duration of the grapple
-    private bool isGrappling = false;
+    public float playerDamage = 30f; // Damage dealt to the player on grapple
 
+    private bool isGrappling = false;
     private NavMeshAgent navMeshAgent;
 
     void Start()
@@ -67,8 +68,22 @@ public class EnemyAI : MonoBehaviour
             yield return null;
         }
 
-        // Re-enable the NavMeshAgent
-        navMeshAgent.enabled = true;
-        isGrappling = false;
+        // Deal damage to the player and destroy the enemy
+        if (Vector3.Distance(transform.position, player.position) <= grappleRange)
+        {
+            HealthSystem playerHealth = player.GetComponent<HealthSystem>();
+            if (playerHealth != null)
+            {
+                playerHealth.Damage(playerDamage);
+            }
+            Destroy(gameObject);
+        }
+
+        // Re-enable the NavMeshAgent if the enemy is not destroyed
+        if (this != null)
+        {
+            navMeshAgent.enabled = true;
+            isGrappling = false;
+        }
     }
 }
