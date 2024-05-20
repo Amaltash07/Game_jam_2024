@@ -114,6 +114,7 @@ public class Player_Ability : MonoBehaviour
     }
     void updateAbility()
     {
-        AbilityName.text=  inventory.items[abilityID].currentPickups.ToString();
+        inventory.changeIcon(abilityID);
+        AbilityName.text = inventory.items[abilityID].currentPickups.ToString();
     }
 }

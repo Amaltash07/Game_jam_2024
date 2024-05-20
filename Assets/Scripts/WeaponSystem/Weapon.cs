@@ -1,11 +1,12 @@
 using UnityEngine;
 using DG.Tweening;
-using Unity.PlasticSCM.Editor.WebApi;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Weapon
 {
     public string weaponName;
+    public GameObject weaponIcon;
     public GameObject weaponObject;
     public RectTransform weaponRectTransform;
 

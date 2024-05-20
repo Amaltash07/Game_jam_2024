@@ -9,6 +9,7 @@ public class InventorySystem : MonoBehaviour
     {
         public string name;
         public int itemID;
+        public GameObject icon;
         public int maxPickups;
         public int currentPickups;
 
@@ -73,6 +74,19 @@ public class InventorySystem : MonoBehaviour
         Debug.Log("Item " + itemID + " not found in inventory.");
         return false;
     }
-
+    public void changeIcon(int itemID)
+    {
+        foreach(Item item in items)
+        {
+            if(item.itemID == itemID)
+            {
+                item.icon.SetActive(true);
+            }
+            else
+            {
+                item.icon.SetActive(false);
+            }
+        }
+    }
     
 }

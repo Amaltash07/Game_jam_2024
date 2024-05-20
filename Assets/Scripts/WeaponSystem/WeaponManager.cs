@@ -105,6 +105,7 @@ public class WeaponManager : MonoBehaviour
         currentWeapon.weaponRectTransform.DOLocalMoveY(-Screen.height, switchTime).OnComplete(() =>
         {
             currentWeapon.weaponObject.SetActive(false);
+            currentWeapon.weaponIcon.SetActive(false);
             weaponEquip(newWeapon);
         });
     }
@@ -112,6 +113,7 @@ public class WeaponManager : MonoBehaviour
     {
         weapon.weaponRectTransform.localPosition = Vector3.up * -Screen.height;
         weapon.weaponObject.SetActive(true);
+        weapon.weaponIcon.SetActive(true);
         weapon.weaponRectTransform.DOLocalMoveY(0, switchTime).OnComplete(() =>
         {
             currentWeapon = weapon;
