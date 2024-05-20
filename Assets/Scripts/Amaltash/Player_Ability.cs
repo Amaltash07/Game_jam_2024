@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 
 public class Player_Ability : MonoBehaviour
 {
     private InventorySystem inventory;
     private HealthSystem playerHealth;
     private WeaponManager weapon;
+    public TextMeshProUGUI AbilityName;
     private int abilityID = 0;
 
     void Start()
@@ -14,6 +17,7 @@ public class Player_Ability : MonoBehaviour
         inventory = FindObjectOfType<InventorySystem>();
         playerHealth = GetComponent<HealthSystem>();
         weapon = GetComponent<WeaponManager>();
+        updateAbility();
     }
 
     void OnTriggerEnter(Collider other)
@@ -61,6 +65,7 @@ public class Player_Ability : MonoBehaviour
                 abilityID = inventory.abilityCount + abilityID;
             } 
         }
+        updateAbility();
 
     }
     void useAbility(int abilityID)
@@ -74,6 +79,7 @@ public class Player_Ability : MonoBehaviour
                 {
                     playerHealth.Heal(20);
                     Debug.Log("ability used.");
+                    updateAbility();
                 }
                 else
                 {
@@ -86,6 +92,7 @@ public class Player_Ability : MonoBehaviour
                 if (used)
                 {
                     weapon.activateWallBreaker();
+                    updateAbility();
                     Debug.Log("ability used.");
                 }
                 else
@@ -103,5 +110,9 @@ public class Player_Ability : MonoBehaviour
                 playerHealth.Damage(40); // Decrease health by 40
             }
         }
+    }
+    void updateAbility()
+    {
+        AbilityName.text= inventory.items[abilityID].name+" Count = " + inventory.items[abilityID].currentPickups.ToString();
     }
 }

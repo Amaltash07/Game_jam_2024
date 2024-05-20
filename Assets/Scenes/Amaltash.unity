@@ -27022,6 +27022,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 810254908132972176, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_Name
+      value: Equipment
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -0.000030518
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 5938272291247211616, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
       propertyPath: m_Pivot.x
       value: 0
