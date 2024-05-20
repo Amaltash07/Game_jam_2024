@@ -2131,7 +2131,7 @@ PrefabInstance:
       objectReference: {fileID: 464017049}
     - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
       propertyPath: isWallBreaker
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2363311547927300966, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
       propertyPath: wallBreakerDuration
@@ -19869,7 +19869,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534569099}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 187.61362, y: 5.825943, z: 116.10942}
