@@ -346,6 +346,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14395887}
   m_CullTransparentMesh: 1
+--- !u!114 &18930625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5861861942727369869, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+  m_PrefabInstance: {fileID: 5938272290875441465}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &41161057
 Mesh:
   m_ObjectHideFlags: 0
@@ -2129,6 +2140,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2363311547927300964, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
+      propertyPath: AbilityName
+      value: 
+      objectReference: {fileID: 18930625}
     - target: {fileID: 2363311547927300965, guid: 50659d770736ee34eaa154cca6bf07e4, type: 3}
       propertyPath: HPCount
       value: 
@@ -27027,6 +27042,10 @@ PrefabInstance:
       value: Equipment
       objectReference: {fileID: 0}
     - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0.08
       objectReference: {fileID: 0}
@@ -27036,15 +27055,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -0.0001
+      value: 0.000030518
       objectReference: {fileID: 0}
     - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -0.000030518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00012207031
+      value: -0.000061035
       objectReference: {fileID: 0}
     - target: {fileID: 2904138019653186978, guid: 3672af1fe74c9454b9037478e1070928, type: 3}
       propertyPath: m_AnchoredPosition.y

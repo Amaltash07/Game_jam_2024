@@ -31,6 +31,7 @@ public class Player_Ability : MonoBehaviour
 
             if (inventory.PickupItem(itemID))
             {
+                updateAbility();
                 Destroy(other.gameObject); // Destroy item object if picked up successfully
             }
         }
