@@ -23,9 +23,9 @@ public class level_manager : MonoBehaviour
         }
     }
 
-   public async void LoadScene(string sceneName)
+   public async void LoadScene(int buildIndex)
     {
-        var scene = SceneManager.LoadSceneAsync(sceneName);
+        var scene = SceneManager.LoadSceneAsync(buildIndex);
         scene.allowSceneActivation = false;
 
         _loaderCanvas.SetActive(true);

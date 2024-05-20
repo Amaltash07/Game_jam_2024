@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class universal_button : MonoBehaviour
 {
-    public void Changescene(string sceneName)
+    public void Changescene(int buildIndex)
     {
-        level_manager.Instance.LoadScene(sceneName);
+        level_manager.Instance.LoadScene(buildIndex);
     }
 }
