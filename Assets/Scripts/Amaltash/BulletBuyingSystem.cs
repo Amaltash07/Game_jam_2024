@@ -5,22 +5,14 @@ using UnityEngine;
 public class BulletBuyingSystem : MonoBehaviour
 {
     public int bulletCost = 10;
-    public PlayerScore playerScore;
-    public int bullets = 0;
+    public int ammoCount = 0;
+    private WeaponManager playerGun;
     private bool isInBuyingZone = false; // To track if player is in the buying zone
 
-    void Start()
+    private void Start()
     {
-        if (playerScore == null)
-        {
-            playerScore = FindObjectOfType<PlayerScore>();
-            if (playerScore == null)
-            {
-                Debug.LogError("PlayerScore component not found in the scene.");
-            }
-        }
+        playerGun = GetComponent<WeaponManager>();
     }
-
     void Update()
     {
         if (isInBuyingZone && Input.GetKeyDown(KeyCode.Tab))
@@ -52,14 +44,22 @@ public class BulletBuyingSystem : MonoBehaviour
 
     public void BuyBullet()
     {
-        if (playerScore.SpendScore(bulletCost))
+        if (playerGun.currentWeapon.CurrentAmmo < playerGun.currentWeapon.MaxAmmo)
         {
-            bullets++;
-            Debug.Log("Bullet purchased! Total bullets: " + bullets);
+            if (PlayerScore.Instance.SpendScore(bulletCost))
+            {
+                playerGun.buyAmmo(ammoCount);
+                Debug.Log("Bullet purchased! Total bullets: " + ammoCount);
+            }
+            else
+            {
+                Debug.Log("Not enough score to buy a bullet.");
+            }
         }
         else
         {
-            Debug.Log("Not enough score to buy a bullet.");
+            Debug.Log("ammo full");
         }
+        
     }
 }

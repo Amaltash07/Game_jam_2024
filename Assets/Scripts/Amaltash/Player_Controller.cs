@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     public InventorySystem inventory;
-    private PlayerHealth playerHealth;
+    private HealthSystem playerHealth;
 
     void Start()
     {
@@ -14,7 +14,7 @@ public class Player_Controller : MonoBehaviour
             inventory = FindObjectOfType<InventorySystem>();
         }
 
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<HealthSystem>();
         if (playerHealth == null)
         {
             Debug.LogError("PlayerHealth component not found on the player.");
@@ -46,7 +46,7 @@ public class Player_Controller : MonoBehaviour
             if (used && playerHealth != null)
             {
 
-                playerHealth.IncreaseHealth(20); // Increase health by a fixed amount, e.g., 20
+                playerHealth.Heal(20); // Increase health by a fixed amount, e.g., 20
                 // Apply health potion effect to the player
                 // Example: Increase player's health
                 Debug.Log("HealthPotion used, apply its effect.");
@@ -61,7 +61,7 @@ public class Player_Controller : MonoBehaviour
         {
             if (playerHealth != null)
             {
-                playerHealth.DecreaseHealth(40); // Decrease health by 40
+                playerHealth.Damage(40); // Decrease health by 40
             }
         }
     }

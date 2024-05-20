@@ -128763,6 +128763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  healthText: {fileID: 0}
 --- !u!114 &2047457865
 MonoBehaviour:
   m_ObjectHideFlags: 0
