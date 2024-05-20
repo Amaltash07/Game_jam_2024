@@ -59,4 +59,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e930b68658aff43bb0aeb8c7a2fe42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  items:
+  - name: HealthPotion
+    itemID: 0
+    icon: {fileID: 0}
+    maxPickups: 3
+    currentPickups: 0
+  - name: WallBreaker
+    itemID: 1
+    icon: {fileID: 0}
+    maxPickups: 1
+    currentPickups: 0
+  abilityCount: 0
