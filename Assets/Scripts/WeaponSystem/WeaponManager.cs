@@ -267,7 +267,7 @@ public class WeaponManager : MonoBehaviour
     }
     void displayAmmo()
     {
-        ammoText.text="Ammo = "+currentWeapon.CurrentAmmo.ToString();
+        ammoText.text=currentWeapon.CurrentAmmo.ToString();
     }
 
 
